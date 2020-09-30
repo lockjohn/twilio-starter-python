@@ -13,7 +13,7 @@ TWILIO_PHONE_NUMBER = os.environ.get('TWILIO_PHONE_NUMBER')
 # account.
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-# Create a Flask web app
+# Create a Flask web appgit 
 app = Flask(__name__)
 
 
@@ -62,6 +62,13 @@ def hello():
     return Response(str(response), mimetype='text/xml')
 
 
+# Generate SMS message using Twilio library
+message = client.messages.create(
+    to="+19724395426"
+    from_=TWILIO_PHONE_NUMBER
+    body=''
+)
+print(message.sid)
 if __name__ == '__main__':
     # Note that in production, you would want to disable debugging
     app.run(debug=True)
